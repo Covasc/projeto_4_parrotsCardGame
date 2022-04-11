@@ -1,11 +1,17 @@
-.background {
+* {
+    box-sizing: border-box;
+}
+.body {
     width: 100%;
     height: 100%;
+    background-color: #EEF9BF;
+}
+.background {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #EEF9BF;
 }
 .title {
     font-family: 'roboto';
@@ -14,18 +20,23 @@
     font-size: 56px;
     margin: 40px 0;
 }
+.game {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 .card {
     width: 117px;
     height: 146px;
-    background: #A7E9AF;
-    border: 1px solid #99CEA8;
-    box-sizing: border-box;
-    border-radius: 5px;
     position: relative;
+    margin: 15px 15px;
 }
 .image {
     width: 100%;
     height: 100%;
+    background: #A7E9AF;
+    border: 1px solid #99CEA8;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,9 +52,15 @@
 .back {
     transform: rotateY(180deg);
   }
-.selected {
+/*.card:hover .back{
     transform: rotateY(0deg);
 }
-.diselected {
+.card:hover .front{
+    transform: rotateY(-180deg);
+}*/
+.selected .back {
+    transform: rotateY(0deg);
+}
+.selected .front {
     transform: rotateY(-180deg);
 }

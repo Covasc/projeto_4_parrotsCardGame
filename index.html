@@ -16,18 +16,55 @@
             <h1>PARROT CARD GAME</h1>
         </div>
         <div class="game">
-            <div class="card">
-                <div class="image front">
-                    <img src="/projeto_4_parrotsCardGame/Images/front.png">
-                </div>
-                <div class="image back">
-                    <img src="/projeto_4_parrotsCardGame/Images/explodyparrot.gif">
-                </div>
-            </div>
         </div>
     </div>
     <script>
-
+        let nCards = Number(prompt("Qual a quantidade de cartas desejadas?"));
+        let nSelected = 0;
+        let validator = false;
+        while (validator==false){
+            if (nCards >= 4 && nCards <= 14) {
+                if (nCards % 2 == 0) {
+                    validator = true;
+                } else {
+                    nCards = Number(prompt("Valor inválido. Qual a quantidade de cartas desejadas?"));
+                }
+            } else {
+                nCards = Number(prompt("Valor inválido. Qual a quantidade de cartas desejadas?"));
+            }
+        }
+        addCards();
+        function addCards () {
+            for (let i=0;i<nCards;i++) {
+                document.querySelector(".game").innerHTML += `<div class="card" onclick="selected(this)">
+                    <div class="image front">
+                        <img src="/projeto_4_parrotsCardGame/Images/front.png">
+                    </div>
+                    <div class="image back">
+                        <img src="/projeto_4_parrotsCardGame/Images/explodyparrot.gif">
+                    </div>
+                </div>`;
+            }
+        }
+        function clearSelect () {
+            nSelected = 0;
+        }
+        function selected (element) {
+            element.classList.add("selected");
+            nSelected ++;
+            console.log(nSelected);
+            if (nSelected==2) {
+                console.log(document.querySelectorAll(".selected"));
+                let list = document.querySelectorAll(".selected");
+                let cont = 0;
+                while (cont < 2) {
+                    console.log(list[cont]);
+                    list[cont].classList.remove("selected");
+                    cont++;
+                }
+                cont = 0;
+            }
+        }
     </script>
 </body>
 </html>
