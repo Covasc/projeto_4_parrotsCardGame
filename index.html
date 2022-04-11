@@ -19,9 +19,11 @@
         </div>
     </div>
     <script>
+        let parrotImage = ['bobrossparrot.gif','bobrossparrot.gif','explodyparrot.gif','explodyparrot.gif','fiestaparrot.gif','fiestaparrot.gif','metalparrot.gif','metalparrot.gif','revertitparrot.gif','revertitparrot.gif','tripletsparrot.gif','tripletsparrot.gif','unicornparrot.gif','unicornparrot.gif'];
         let nCards = Number(prompt("Qual a quantidade de cartas desejadas?"));
         let nSelected = 0;
         let validator = false;
+        let attempts = 0;
         while (validator==false){
             if (nCards >= 4 && nCards <= 14) {
                 if (nCards % 2 == 0) {
@@ -33,6 +35,15 @@
                 nCards = Number(prompt("Valor inválido. Qual a quantidade de cartas desejadas?"));
             }
         }
+        let sortCards = [];
+        for (let i=0;i<nCards;i++){
+            sortCards[i] = parrotImage[i];
+        }
+        sortCards = sortCards.sort(comparador);
+        function comparador() { 
+	        return Math.random() - 0.5; 
+        }
+        console.log(sortCards);
         addCards();
         function addCards () {
             for (let i=0;i<nCards;i++) {
@@ -41,28 +52,27 @@
                         <img src="/projeto_4_parrotsCardGame/Images/front.png">
                     </div>
                     <div class="image back">
-                        <img src="/projeto_4_parrotsCardGame/Images/explodyparrot.gif">
+                        <img src="/projeto_4_parrotsCardGame/Images/${sortCards[i]}">
                     </div>
                 </div>`;
             }
-        }
-        function clearSelect () {
-            nSelected = 0;
+        }   
+        function clearSelected (){
+            let list = document.querySelectorAll(".selected");
+            let cont = 0;
+            while (cont < list.length) {
+                list[cont].classList.remove("selected");
+                cont ++;
+            }
+            nSelected=0;
+            document.querySelector(".game").classList.remove("blockClick");
         }
         function selected (element) {
             element.classList.add("selected");
             nSelected ++;
-            console.log(nSelected);
             if (nSelected==2) {
-                console.log(document.querySelectorAll(".selected"));
-                let list = document.querySelectorAll(".selected");
-                let cont = 0;
-                while (cont < 2) {
-                    console.log(list[cont]);
-                    list[cont].classList.remove("selected");
-                    cont++;
-                }
-                cont = 0;
+                setTimeout (clearSelected, 1000);
+                document.querySelector(".game").classList.add("blockClick");
             }
         }
     </script>
