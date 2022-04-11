@@ -20,19 +20,19 @@
     </div>
     <script>
         let parrotImage = ['bobrossparrot.gif','bobrossparrot.gif','explodyparrot.gif','explodyparrot.gif','fiestaparrot.gif','fiestaparrot.gif','metalparrot.gif','metalparrot.gif','revertitparrot.gif','revertitparrot.gif','tripletsparrot.gif','tripletsparrot.gif','unicornparrot.gif','unicornparrot.gif'];
-        let nCards = Number(prompt("Qual a quantidade de cartas desejadas?"));
+        let nCards = parseInt(prompt("Qual a quantidade de cartas desejadas?"));
         let nSelected = 0;
         let validator = false;
         let attempts = 0;
         while (validator==false){
-            if (nCards >= 4 && nCards <= 14) {
+            if (isNaN(nCards) || nCards >= 4 && nCards <= 14) {
                 if (nCards % 2 == 0) {
                     validator = true;
                 } else {
-                    nCards = Number(prompt("Valor inválido. Qual a quantidade de cartas desejadas?"));
+                    nCards = parseInt(prompt("Valor inválido. Qual a quantidade de cartas desejadas?"));
                 }
             } else {
-                nCards = Number(prompt("Valor inválido. Qual a quantidade de cartas desejadas?"));
+                nCards = parseInt(prompt("Valor inválido. Qual a quantidade de cartas desejadas?"));
             }
         }
         let sortCards = [];
