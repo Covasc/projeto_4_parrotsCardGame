@@ -1,0 +1,49 @@
+.background {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #EEF9BF;
+}
+.title {
+    font-family: 'roboto';
+    color: #75B79E;
+    font-weight: 700;
+    font-size: 56px;
+    margin: 40px 0;
+}
+.card {
+    width: 117px;
+    height: 146px;
+    background: #A7E9AF;
+    border: 1px solid #99CEA8;
+    box-sizing: border-box;
+    border-radius: 5px;
+    position: relative;
+}
+.image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+}
+.image img {
+    width: 100px;
+    height: 100px;
+}
+.back {
+    transform: rotateY(180deg);
+  }
+.selected {
+    transform: rotateY(0deg);
+}
+.diselected {
+    transform: rotateY(-180deg);
+}
