@@ -15,7 +15,10 @@
 }
 .title {
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 100%;
     font-family: 'roboto';
     color: #75B79E;
@@ -71,4 +74,15 @@
 }
 .blockClick {
     pointer-events: none;
+}
+.goal .back {
+    transform: rotateY(0deg);
+}
+.goal .front {
+    transform: rotateY(-180deg);
+}
+@media (max-width: 614px) {
+    .title {
+        font-size: 36px;
+    }
 }

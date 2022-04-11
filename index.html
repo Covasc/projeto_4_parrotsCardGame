@@ -43,25 +43,24 @@
         function comparador() { 
 	        return Math.random() - 0.5; 
         }
-        console.log(sortCards);
         addCards();
         function addCards () {
             for (let i=0;i<nCards;i++) {
                 document.querySelector(".game").innerHTML += `<div class="card" onclick="selected(this)">
                     <div class="image front">
-                        <img src="/projeto_4_parrotsCardGame/Images/front.png">
+                        <img src="Images/front.png">
                     </div>
                     <div class="image back">
-                        <img src="/projeto_4_parrotsCardGame/Images/${sortCards[i]}">
+                        <img src="Images/${sortCards[i]}">
                     </div>
                 </div>`;
             }
         }   
         function clearSelected (){
-            let list = document.querySelectorAll(".selected");
+            let listClear = document.querySelectorAll(".selected");
             let cont = 0;
-            while (cont < list.length) {
-                list[cont].classList.remove("selected");
+            while (cont < listClear.length) {
+                listClear[cont].classList.remove("selected");
                 cont ++;
             }
             nSelected=0;
@@ -70,10 +69,29 @@
         function selected (element) {
             element.classList.add("selected");
             nSelected ++;
+            attempts ++;
             if (nSelected==2) {
+                let list = document.querySelectorAll(".selected");
+                let elementOne = list[0].innerHTML;
+                let elementTwo = list[1].innerHTML;
+                if (elementOne == elementTwo) {
+                    list[0].classList.add("goal");
+                    list[1].classList.add("goal");
+                    list[0].classList.remove("selected");
+                    list[1].classList.remove("selected");
+
+                }
                 setTimeout (clearSelected, 1000);
                 document.querySelector(".game").classList.add("blockClick");
+                let goalList = document.querySelectorAll(".goal");
+                console.log(goalList.length);
+                if (goalList.length == nCards){
+                    setTimeout (win, 100);
+                }
             }
+        }
+        function win () {
+            alert(`Você ganhou com ${attempts} tentativas`)
         }
     </script>
 </body>
